@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static java.time.format.ResolverStyle.STRICT;
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 // BScanner is a scanner class, wrapping the java.util.Scanner, providing a bit more
@@ -12,36 +12,25 @@ import static java.time.format.ResolverStyle.STRICT;
 ///////////////////////////////////////////////////////////////////////////////////
 class BScanner
 {
-   private final Scanner scanner;
+   private Scanner scanner = new Scanner(System.in);
 
    ////////////////////////////////////////////////////////////////////////////////
    ////////////////////////////////////////////////////////////////////////////////
    public BScanner()
    {
-      this( System.in );
+      Scanner scanner = new Scanner(System.in);
+      scanner.useLocale( Locale.UK );
    }
+
 
    ////////////////////////////////////////////////////////////////////////////////
    ////////////////////////////////////////////////////////////////////////////////
-   public BScanner( InputStream inputStream )
-   {
-      scanner = new Scanner( inputStream );
-      scanner.useLocale( Locale.US );    // E.g. decimal point. No comma!
-   }
+   DateTimeFormatter y_MMM_d = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+   DateTimeFormatter d_mm_y = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-   ////////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////////
-   public BScanner( String arg )
-   {
-      scanner = new Scanner( arg );
-      scanner.useLocale( Locale.US );
-   }
-
-   ////////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////////
    public int nextInt()
    {
-      int r = 0;
+      int r;
 
       while (true)
       {
@@ -52,7 +41,9 @@ class BScanner
          }
          catch (Exception e)
          {
-            System.out.println( "please enter integer" );
+            System.out.println("==================================================");
+            System.out.println( "Invalid input. Please enter an integer: " );
+
          }
          scanner.nextLine();
       }
@@ -64,7 +55,7 @@ class BScanner
    ////////////////////////////////////////////////////////////////////////////////
    public double nextDouble()
    {
-      double r = 0;
+      double r;
 
       while (true)
       {
@@ -87,57 +78,64 @@ class BScanner
    ////////////////////////////////////////////////////////////////////////////////
    public String nextLine()
    {
-      String r = "";
+      Scanner scanPapi = new Scanner(System.in);
+      String r;
 
       while (true)
       {
          try
          {
-            r = scanner.nextLine();
+            r = scanPapi.nextLine();
             break;
          }
          catch (Exception e)
          {
-            System.out.println( "please enter a string (ws allowed)" );
+            System.out.print("Invalid input. Please enter a valid input: ");
          }
-         scanner.nextLine();
       }
 
       return r;
    }
 
-   ////////////////////////////////////////////////////////////////////////////////
-   /// Note: STRICT formatting does not work....?????
-   ///       java.time.format.ResolverStyle.STRICT (see formatter, below)
-   ////////////////////////////////////////////////////////////////////////////////
-   public LocalDate nextDate( String fmt )
+//!!! LocalDate birthday zodat als nextDate() niets returned birthday niet null wordt,
+   //waardoor het programma zou crashen.
+   //Als nextDate goed gaat, wordt oude birthday vervangen.
+   public LocalDate nextDate(LocalDate birthday)
    {
-      LocalDate r     = null;
-      String    sdate = "";
+      Scanner scanigga = new Scanner(System.in);
+      LocalDate r;
+      String fmt = "dd-MM-yyyy";
+      String dateString = "";
 
-//    DateTimeFormatter formatter = DateTimeFormatter.ofPattern( fmt );
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern( fmt ).withResolverStyle( STRICT );
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern(fmt);
+
       while (true)
       {
          try
          {
-            sdate = scanner.nextLine();
-            r     = LocalDate.parse( sdate, formatter );
+            dateString = scanigga.nextLine();
+            if (dateString.equals("0")) {
+               System.out.println("Birthday has not been changed");
+               return birthday;
+            }
+            r     = LocalDate.parse( dateString, formatter );
             break;
          }
-         catch (Exception e)
-         {
-            System.out.format( "%s is not a valid date; ", sdate );
-            System.out.format( "please enter a valid date %s:\n", fmt );
-//            while (scanner.hasNext())
-//            {
-//               scanner.next();
-//            }
+         catch (Exception e) {
+            System.out.format( "%s : this date format is not recognized", dateString );
+            System.out.format( ", please enter a valid date %s:\n", fmt );
          }
-         //scanner.nextLine();
       }
-
       return r;
    }
+   public boolean yayNay() {
+      System.out.println("Are you sure?");
+      System.out.print("Choose 'y' or 'n': ");
+      char yayNay = scanner.next().trim().toLowerCase().charAt(0);
 
+      if(yayNay == 'y') {
+         return true;
+      }
+      return false;
+   }
 }

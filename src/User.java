@@ -40,7 +40,7 @@ class User extends Person {
       if(choice == 7) return 'h';
       if(choice == 8) return 'i';
       if(choice == 9) return 'j';
-      else return 'a';
+      else return 'z';
    }
    public void printMenu_withOptions() {
       System.out.format("%S%n", "[0] back");

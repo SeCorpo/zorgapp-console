@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Dentist extends User {
 
     private Consult consult;
-    private String dentist_Title = "DMD";
     public Dentist(String title, String firstName, String surname, LocalDate birthday) {
         super(title, firstName, surname, birthday);
     }
@@ -21,7 +20,7 @@ public class Dentist extends User {
         if(choice == 6) return 'g';
         if(choice == 7) return 'h';
         if(choice == 8) return 'j';
-        else return 'a';
+        else return 'z';
     }
     @Override
     public void printMenu_withOptions() {

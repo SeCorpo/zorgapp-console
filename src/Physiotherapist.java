@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class Physiotherapist extends User {
 
     private Consult consult;
-    private StarNotes starNotes;
-    private String physiotherapist_Title = "physio";
     public Physiotherapist(String title, String firstName, String surname, LocalDate birthday) {
         super(title, firstName, surname, birthday);
     }

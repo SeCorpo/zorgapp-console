@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Doctor extends User {
 
     private Consult consult;
-    private String doctor_Title = "MD";
     public Doctor(String title, String firstName, String surname, LocalDate birthday) {
         super(title, firstName, surname, birthday);
     }
@@ -22,10 +21,10 @@ public class Doctor extends User {
         if(choice == 6) return 'g';
         if(choice == 7) return 'h';
         if(choice == 8) return 'j';
-        else return 'a';
+        else return 'z';
     }
     @Override
-    public void printMenu_withOptions() {;
+    public void printMenu_withOptions() {
         System.out.format("%S%n", "[0] back");
         System.out.format("%S%n", "[1] select patient");
         System.out.format("%S%n", "[2] view patient");

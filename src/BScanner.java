@@ -1,4 +1,3 @@
-import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -53,20 +52,20 @@ class BScanner
 
    ////////////////////////////////////////////////////////////////////////////////
    ////////////////////////////////////////////////////////////////////////////////
-   public double nextDouble()
+   public float nextFloat()
    {
-      double r;
+      float r;
 
       while (true)
       {
          try
          {
-            r = scanner.nextDouble();
+            r = scanner.nextFloat();
             break;
          }
          catch (Exception e)
          {
-            System.out.println( "please enter a floating point number" );
+            System.out.print( "Invalid input. Please enter a float value: " );
          }
          scanner.nextLine();
       }

@@ -23,6 +23,7 @@ class Administration {
    public static final char DELETE_MEDICATION = 'p';
    public static final char EDIT_PATIENTNUMBER = 'q';
    public static final char DELETE_MEDNOTE = 'r';
+   public static final char CASE_DEFAULT = 'z';
 
    Patient currentPatient;            // The currently selected patient
    User    currentUser;               // the current user of the program.
@@ -142,7 +143,6 @@ class Administration {
 
             case SETTINGS:
                currentUser.menu_Settings(medication, data);
-//               editMedicationStDose(medication);
                break;
 
             case ADD_MEDNOTE:
@@ -189,7 +189,7 @@ class Administration {
                break;
 
             case DELETE_MEDICATION:
-
+               System.out.println("Function currently not available");
                break;
 
             case EDIT_PATIENTNUMBER:
@@ -197,15 +197,17 @@ class Administration {
                break;
 
             case DELETE_MEDNOTE:
-
+               System.out.println("Function currently not available");
                break;
+
+            case CASE_DEFAULT:
 
             default:
                System.out.println("Invalid input. Please enter a valid input: ");
          }
       }
    }
-
+//for lolz
    private boolean admin_Checker() {
       if(currentUser instanceof Admin) {
          return true;

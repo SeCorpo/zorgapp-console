@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 class Patient extends Person {
@@ -160,9 +159,9 @@ class Patient extends Person {
    }
    public void patient_Edit_Length_Weight() {
       System.out.print("New length (1.80): ");
-      setLength(Float.parseFloat(scanner.nextLine()));
+      setLength(bs.nextFloat());
       System.out.print("New weight: ");
-      setWeight(Float.parseFloat(scanner.nextLine()));
+      setWeight(bs.nextFloat());
       System.out.format("%s %.2f %s %.1f\n", "Current patients length: ", getLength(), " and weight: ", getWeight());
    }
 

@@ -24,7 +24,7 @@ public class Admin extends User {
         if(choice == 7) return 'q';
         if(choice == 8) return 'r';
         if(choice == 9) return 'j';
-        else return 'a';
+        else return 'z';
     }
 
     @Override
@@ -55,9 +55,8 @@ public class Admin extends User {
         while (nextCycle) {
 
             switch (choice) {
-                case BACK -> {
+                case BACK ->
                     nextCycle=false;
-                }
 
                 case 1 -> {
                     user_Add_Menu_("Doctor");
@@ -142,9 +141,9 @@ public class Admin extends User {
         System.out.print("New birthday (dd-MM-yyyy): ");
         newBirthday = bs.nextDate(LocalDate.of(1991,01,01));
         System.out.print("New weight: ");
-        newWeight = Float.parseFloat(scanner.nextLine());
+        newWeight = bs.nextFloat();
         System.out.print("New length (1.80): ");
-        newLength = Float.parseFloat(scanner.nextLine());
+        newLength = bs.nextFloat();
 
         data.getPatientList().add(new Patient(data.newPatientNumber(), newFirstName, newSurname, newBirthday, newWeight, newLength));
 
@@ -152,9 +151,6 @@ public class Admin extends User {
                 data.getPatientList().get(data.latest_NewPatientNumber - 1).getBirthday().format(bs.d_mm_y));
 
     }
-    //null melding, dacht misschien omdat data nog niet opnieuw geladen was? printout stond eerst in patient_Add_New, dus had ik een nieuwe functie print_New gemaakt
-    //patient wordt niet goed gemaakt
-
 
     public void patient_Delete(Data data) {
         patient_Selector(data);

@@ -7,6 +7,8 @@ public class Data {
 Data() {
     }
 
+    //When selecting a patient, it uses array-index number, not patient id
+
 //instances=========
 private HashMap<Integer, User> userMap = new HashMap<>();
 private ArrayList<Patient> patientList = new ArrayList<>();
@@ -32,8 +34,9 @@ private ArrayList<Consult> physio_Consult = new ArrayList<>();
 
 //patients==========
 {
+    patientList.add(new Patient(0, "Patient", "Star", LocalDate.of(1950, 1, 1), 81f, 1.69f));
     patientList.add(new Patient(1, "Patient", "Zero", LocalDate.of(1950, 1, 1), 80f, 1.85f));
-    patientList.add(new Patient(2, "Sem", "Koldewijn", LocalDate.of(1999, 6, 1), 75f, 1.83f));
+    patientList.add(new Patient(2, "Dildo", "Swaggins", LocalDate.of(1999, 6, 2), 75f, 1.83f));
     patientList.add(new Patient(3, "Barack", "Obama", LocalDate.of(1961, 8, 4), 80f, 1.86f));
     patientList.add(new Patient(4, "Steve", "Carell", LocalDate.of(1962, 8, 16), 78f, 1.75f));
     patientList.add(new Patient(5, "Xi", "Jinping", LocalDate.of(1953, 6, 15), 73f, 1.75f));
@@ -54,13 +57,13 @@ private ArrayList<Consult> physio_Consult = new ArrayList<>();
 
 //patientMedicationNotes=======
 {
-    patientList.get(2).addMedNote(medicationList.get(3),"Behoefte aan focus", LocalDate.of(2023,3,6));
+    patientList.get(3).addMedNote(medicationList.get(3),"Behoefte aan focus", LocalDate.of(2023,3,6));
     patientList.get(3).addMedNote(medicationList.get(2),"Door zijn stressvolle baan heeft meneer behoeft aan wat ontspanning",LocalDate.of(2023,3,6));
     patientList.get(3).addMedNote(medicationList.get(4),"Gebeten door een hond",LocalDate.of(2023,3,31));
-    patientList.get(4).addMedNote(medicationList.get(1),"Wuhan-virus opgelopen",LocalDate.of(2023,3,31));
-    patientList.get(1).addMedNote(medicationList.get(3),"Spacen dit weekend, 3 doosjes 25mg",LocalDate.of(2023,3,31));
-    patientList.get(2).addMedNote(medicationList.get(4),"Griep klachten",LocalDate.of(2022,6,12));
-    patientList.get(2).addMedNote(medicationList.get(0),"Hoge bloeddruk 130-90",LocalDate.of(2022,5,5));
+    patientList.get(3).addMedNote(medicationList.get(1),"virus opgelopen",LocalDate.of(2023,3,31));
+    patientList.get(3).addMedNote(medicationList.get(3),"Spacen dit weekend, 3 doosjes 25mg",LocalDate.of(2023,3,31));
+    patientList.get(3).addMedNote(medicationList.get(4),"Griep klachten",LocalDate.of(2022,6,12));
+    patientList.get(3).addMedNote(medicationList.get(0),"Hoge bloeddruk 130-90",LocalDate.of(2022,5,5));
 
 }
 
@@ -87,33 +90,33 @@ private ArrayList<Consult> physio_Consult = new ArrayList<>();
 
 //patientConsultNotes========
 {
-    patientList.get(1).addConsultNote(doctor_Consult.get(2),"Kankerlijah hebt obesitas wss", LocalDate.of(2023,3,31));
-    patientList.get(2).addConsultNote(doctor_Consult.get(0),"Gebroken hand, doorverwezen naar specialist", LocalDate.of(2023,3,31));
-    patientList.get(2).addConsultNote(doctor_Consult.get(0),"Betonvlinder in oog, gedeeltelijk tijdelijke blindheid", LocalDate.of(2022,1,2));
-    patientList.get(2).addConsultNote(doctor_Consult.get(0),"Bloeddruk meting, 110-80, prima", LocalDate.of(2021,7,14));
-    patientList.get(2).addConsultNote(physio_Consult.get(3),"30 minuten shiatzu", LocalDate.of(2022,9,23));
-    patientList.get(2).addConsultNote(dentist_Consult.get(1), "Zonder verdoving door verslavingsgeschiedenis", LocalDate.of(2020,6,2));
+    patientList.get(3).addConsultNote(doctor_Consult.get(2),"Kankerlijah hebt obesitas wss", LocalDate.of(2023,3,31));
+    patientList.get(3).addConsultNote(doctor_Consult.get(0),"Gebroken hand, doorverwezen naar specialist", LocalDate.of(2023,3,31));
+    patientList.get(3).addConsultNote(doctor_Consult.get(0),"Betonvlinder in oog, gedeeltelijk tijdelijke blindheid", LocalDate.of(2022,1,2));
+    patientList.get(3).addConsultNote(doctor_Consult.get(0),"Bloeddruk meting, 110-80, prima", LocalDate.of(2021,7,14));
+    patientList.get(3).addConsultNote(physio_Consult.get(3),"30 minuten shiatzu", LocalDate.of(2022,9,23));
+    patientList.get(3).addConsultNote(dentist_Consult.get(1), "Zonder verdoving door verslavingsgeschiedenis", LocalDate.of(2020,6,2));
     patientList.get(3).addConsultNote(doctor_Consult.get(1),"Mannen maken moneyyyy jaja", LocalDate.of(2023,3,31));
-    patientList.get(4).addConsultNote(doctor_Consult.get(1),"Alle Heil voor de China Communist Partij", LocalDate.of(2023,3,31));
-    patientList.get(2).addConsultNote(doctor_Consult.get(0),"Klacht over pijn in linkerarm, geadviseerd om rust te nemen", LocalDate.of(2021,11,15));
-    patientList.get(2).addConsultNote(physio_Consult.get(5),"45 minuten krachttraining", LocalDate.of(2022,4,17));
-    patientList.get(2).addConsultNote(doctor_Consult.get(1),"Grieperig, medicatie voorgeschreven", LocalDate.of(2022,6,12));
-    patientList.get(2).addConsultNote(physio_Consult.get(3),"60 minuten yoga", LocalDate.of(2023,2,14));
-    patientList.get(2).addConsultNote(doctor_Consult.get(0),"Hoge bloeddruk, medicatie voorgeschreven", LocalDate.of(2022,5,5));
-    patientList.get(2).addConsultNote(physio_Consult.get(5),"75 minuten aquarobics", LocalDate.of(2022,7,19));
+    patientList.get(3).addConsultNote(doctor_Consult.get(1),"Alle Heil voor de China Communist Partij", LocalDate.of(2023,3,31));
+    patientList.get(3).addConsultNote(doctor_Consult.get(0),"Klacht over pijn in linkerarm, geadviseerd om rust te nemen", LocalDate.of(2021,11,15));
+    patientList.get(3).addConsultNote(physio_Consult.get(5),"45 minuten krachttraining", LocalDate.of(2022,4,17));
+    patientList.get(3).addConsultNote(doctor_Consult.get(1),"Grieperig, medicatie voorgeschreven", LocalDate.of(2022,6,12));
+    patientList.get(3).addConsultNote(physio_Consult.get(3),"60 minuten yoga", LocalDate.of(2023,2,14));
+    patientList.get(3).addConsultNote(doctor_Consult.get(0),"Hoge bloeddruk, medicatie voorgeschreven", LocalDate.of(2022,5,5));
+    patientList.get(3).addConsultNote(physio_Consult.get(5),"75 minuten aquarobics", LocalDate.of(2022,7,19));
     patientList.get(3).addConsultNote(dentist_Consult.get(0), "Op 3-4 lichte kalksteen, verder geen klachten", LocalDate.of(2023,3,31));
 }
 
 //patientStarNotes========
 {
-    patientList.get(2).addStarNote(4.3,"****",LocalDate.of(2023,3,25));
-    patientList.get(2).addStarNote(4.4,"****",LocalDate.of(2023,3,26));
-    patientList.get(2).addStarNote(4.6,"****",LocalDate.of(2023,3,27));
-    patientList.get(2).addStarNote(5.1,"*****",LocalDate.of(2023,3,28));
-    patientList.get(2).addStarNote(5.4,"*****",LocalDate.of(2023,3,29));
-    patientList.get(2).addStarNote(4.9,"*****",LocalDate.of(2023,3,30));
-    patientList.get(2).addStarNote(5.1,"*****",LocalDate.of(2023,3,31));
-    patientList.get(2).addStarNote(7.8,"*******",LocalDate.of(2023,4,1));
+    patientList.get(3).addStarNote(4.3,"****",LocalDate.of(2023,3,25));
+    patientList.get(3).addStarNote(4.4,"****",LocalDate.of(2023,3,26));
+    patientList.get(3).addStarNote(4.6,"****",LocalDate.of(2023,3,27));
+    patientList.get(3).addStarNote(5.1,"*****",LocalDate.of(2023,3,28));
+    patientList.get(3).addStarNote(5.4,"*****",LocalDate.of(2023,3,29));
+    patientList.get(3).addStarNote(4.9,"*****",LocalDate.of(2023,3,30));
+    patientList.get(3).addStarNote(5.1,"*****",LocalDate.of(2023,3,31));
+    patientList.get(3).addStarNote(7.8,"*******",LocalDate.of(2023,4,1));
 }
 
 //getters================
